@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require 'flickr'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -67,4 +68,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # The credentials can be provided as parameters:
+
+  flickr = Flickr.new(ENV['FLICKR_API_KEY'], ENV['FLICKR_SHARED_SECRET'])
+
+
+# Alternatively, if the API key and Shared Secret are not provided, Flickr will attempt to read them
+# from environment variables:
+# ENV['FLICKR_API_KEY']
+# ENV['FLICKR_SHARED_SECRET']
+
+flickr = Flickr.new
+
+# Flickr will raise an error if either parameter is not explicitly provided, or available via environment variables.
 end

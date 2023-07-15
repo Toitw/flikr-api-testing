@@ -1,0 +1,10 @@
+<% if @photo_urls %>
+  <% @photo_urls.each do |photo_url| %>
+    <%= image_tag(photo_url) %>
+  <% end %>
+<% else %>
+  <p>No photos found.</p>
+<% end %>
+
+
+<%= link_to "Back", root_path %>
